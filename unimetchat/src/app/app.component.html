@@ -1,0 +1,27 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div *ngIf="user?.uid;else loginBox">
+  <div style="text-align:center;">
+  <h1>
+    Welcome to {{ title }}!!
+  </h1>
+  <button (click)="logout()">Logout</button>
+  </div>
+</div>
+
+
+<div *ngIf="isLoggedIn()">
+  
+  <ul>
+    <label><b>Topics:</b></label>
+    <li class="text" *ngFor="let topic of topics | async">
+      {{topic.$value}}
+    </li>
+  </ul>
+</div>
+
+<ng-template #loginBox>
+  <div style="text-align: center;">
+    <h1>Login to {{title}}!!</h1>
+  </div>
+  <button (click)="loginWithGoogle()">Login with Google</button>
+</ng-template>
